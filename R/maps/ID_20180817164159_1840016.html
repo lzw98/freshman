@@ -1,0 +1,333 @@
+<html>
+  <head>
+                <meta charset='utf-8'>
+                <style type='text/css'>
+                body {
+                margin: 0;
+                }
+                #main {
+                height: 100%;
+                }
+                </style>
+                </head>
+                <body>
+                <div id='main'></div>
+                <script src='http://echarts.baidu.com/build/dist/echarts.js'></script>
+                <script type='text/javascript' src='http://api.map.baidu.com/api?v=2.0&ak=q9U1lWgCK1aBGVC1DVWrgWa7'></script>
+                <script src='http://echarts.baidu.com/doc/asset/js/jquery.min.js'></script>
+                <script>
+
+                (function () {
+                require.config({
+                paths: {
+                echarts:'http://echarts.baidu.com/doc/example/www/js'
+                },
+                packages: [
+                {
+                name: 'BMap',
+                location: 'http://lchiffon.github.io/reveal_slidify/echarts/require',
+                main: 'main'
+                }
+                ]
+                });
+
+                require(
+                [
+                'echarts',
+                'BMap',
+                'echarts/chart/map'
+                ],
+                function (echarts, BMapExtension) {
+
+                var BMapExt = new BMapExtension($('#main')[0], BMap, echarts,{
+                enableMapClick: false
+                });
+                var map = BMapExt.getMap();
+                var container = BMapExt.getEchartsContainer();
+
+                var startPoint = {
+                x: 104.114129,
+                y: 37.550339
+                };
+                var point = new BMap.Point(startPoint.x, startPoint.y);
+                map.centerAndZoom(point, 5);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({
+    styleJson: [
+    {
+    'featureType': 'water',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#044161'
+    }
+    },
+    {
+    'featureType': 'land',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#064f85'
+    }
+    },
+    {
+    'featureType': 'railway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#005b96',
+    'lightness': 1
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#00508b'
+    }
+    },
+    {
+    'featureType': 'poi',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'green',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#056197',
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'subway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'manmade',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'local',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#029fd4'
+    }
+    },
+    {
+    'featureType': 'building',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#1a5787'
+    }
+    },
+    {
+    'featureType': 'label',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    }
+    ]
+  });
+
+
+optionID_20180817164159_1840016 = {
+  color: ['gold','aqua','lime'],
+  title : {
+    text: 'remapB( )函数绘制流向地图',
+    subtext: 'color设置为Blue',
+    x:'center',
+    textStyle : {
+      color: '#fff'
+    }
+  },
+  tooltip : {
+    show: true,
+    trigger: 'item',
+    formatter: function (v) {
+               if(v[2].tooltipValue!=null){
+               return v[2].tooltipValue;
+               }else{
+               return v[1];
+               }
+  }},
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  series : [
+    {
+      type:'map',
+      mapType: 'none',
+      data:[]
+      
+  ,markLine : {
+    Symbol:['NA', 'NA'],
+    symbolSize:['0', '5'],
+    smooth:true,
+    smooth:0,
+    effect : {
+      show: true,
+      scaleSize: 1,
+      period: 30,
+      color: '#fff',
+      shadowBlur: 10
+    },
+    itemStyle : {
+      color: 'red',
+      normal: {
+        color:'yellow',
+        borderWidth:1,
+        lineStyle: {
+          type: 'dashed',
+          width: 4,
+          shadowBlur: 10
+        },
+        label:{show:false}
+      }
+    },
+
+    data : [[{name:'beijing'}, {name:'shanghai',value:43}],
+[{name:'beijing'}, {name:'guangzhou',value:19}],
+[{name:'beijing'}, {name:'wulumuqi',value:66}],
+[{name:'beijing'}, {name:'dalian',value:69}],
+[{name:'beijing'}, {name:'xiamen',value:72}],
+[{name:'beijing'}, {name:'chengde',value:39}],
+[{name:'beijing'}, {name:'changchun',value:10}],
+[{name:'beijing'}, {name:'baotou',value:30}],
+[{name:'beijing'}, {name:'chongqing',value: 6}],
+[{name:'beijing'}, {name:'zhengzhou',value:87}]]},
+    geoCoord:{'shanghai': [121.55880,31.23115],
+'guangzhou': [113.27143,23.13534],
+'wulumuqi': [ 87.62444,43.83076],
+'dalian': [121.62163,38.91895],
+'xiamen': [118.13298,24.52426],
+'chengde': [117.96940,40.95786],
+'changchun': [125.33061,43.82195],
+'baotou': [109.84654,40.66293],
+'chongqing': [106.55844,29.56900],
+'zhengzhou': [113.63142,34.75344],
+'beijing': [116.41339,39.91092]
+    }
+  
+      ,markPoint : {
+        symbol:'emptyCircle',
+      symbolSize :15,
+      effect : {
+        show: true,
+        type: 'scale',
+        shadowBlur : 0
+      },
+      itemStyle:{
+      normal:{
+        label:{show:false},
+        color:'white'
+      },
+      emphasis: {
+        label:{show:false}
+      }
+      },
+      data : [{name:'shanghai',value:25,symbol:'rectangle'},
+{name:'guangzhou',value:34,symbol:'rectangle'},
+{name:'wulumuqi',value:36,symbol:'rectangle'},
+{name:'dalian',value:79,symbol:'rectangle'},
+{name:'xiamen',value:17,symbol:'rectangle'},
+{name:'chengde',value:71,symbol:'rectangle'},
+{name:'changchun',value: 4,symbol:'rectangle'},
+{name:'baotou',value:75,symbol:'rectangle'},
+{name:'chongqing',value:71,symbol:'rectangle'},
+{name:'zhengzhou',value:16,symbol:'rectangle'}
+      ]},
+      geoCoord:{'shanghai': [121.55880,31.23115],
+'guangzhou': [113.27143,23.13534],
+'wulumuqi': [ 87.62444,43.83076],
+'dalian': [121.62163,38.91895],
+'xiamen': [118.13298,24.52426],
+'chengde': [117.96940,40.95786],
+'changchun': [125.33061,43.82195],
+'baotou': [109.84654,40.66293],
+'chongqing': [106.55844,29.56900],
+'zhengzhou': [113.63142,34.75344],
+'beijing': [116.41339,39.91092]
+                  }
+                  
+
+    },
+    ]
+};
+
+
+var myChart = BMapExt.initECharts(container);
+window.onresize = myChart.onresize;
+BMapExt.setOption(optionID_20180817164159_1840016);
+                }
+                );
+                })();
+</script>
+  </body>
+  </html>
+
+  

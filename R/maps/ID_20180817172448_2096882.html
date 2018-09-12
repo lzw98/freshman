@@ -1,0 +1,110 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+  <style type="text/css">
+  body {
+  margin: 0;
+  }
+  #main {
+  height: 100%;
+  }
+  </style>
+  </head>
+  <body>
+  <div id="main"></div>
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+  <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+  <script>
+  var myChart = echarts.init(document.getElementById("main"));
+
+  
+
+  var heatData = [[116.43,39.94,20800000],
+[116.34,39.97,190009],
+[116.65,39.93,2100000],
+[116.62,39.99,20552],
+[116.26,39.91,182628],
+[116.52,39.89,1916526]];
+  var optionID_20180817172448_2096882 =
+  {
+
+  backgroundColor: '#1b1b1b',
+  color: ['gold','aqua','lime'],
+  title : {
+  text: '',
+  subtext:'',
+  x:'center',
+  textStyle : {
+  color: '#fff'
+  }
+  },
+  tooltip : {
+  trigger: 'item',
+  formatter: function (v) {
+  if(v[2].tooltipValue!=null){
+  return v[2].tooltipvalue;
+  }else{
+  return v[1];
+  }
+  }},
+  dataRange: {
+    show: false,
+    min : 0,
+    max : 100,
+    calculable : true,
+    color: ['#ff3333', 'orange', 'yellow','lime','aqua'],
+    textStyle:{
+      color:'#fff'
+    }
+  },
+  legend: {
+  show:false,
+  orient: 'vertical',
+  x:'left',
+  data:['Data'],
+  textStyle:{color:'backgroundColorData'}
+
+  },
+  toolbox: {
+  show : true,
+  orient : 'vertical',
+  x: 'right',
+  y: 'center',
+  feature : {
+  mark : {show: true},
+  dataView : {show: true, readOnly: false},
+  restore : {show: true},
+  saveAsImage : {show: true}
+  }
+  },
+  series : [
+  {
+  name:'Data',
+  type:'map',
+  mapType: 'china',
+  roam: true,
+  itemStyle:{
+  normal:{
+  borderColor:'rgba(100,149,237,1)',
+  borderWidth: 0.5,
+  label:{show:true,textStyle:{color:'#fff'}},
+  areaStyle: {color: 'backgroundColorData'}
+  },
+  emphasis:{label:{show:true,textStyle:{color:'#fff'}}}
+  },
+  data:[]
+  ,heatmap: {
+                      blurSize:30 ,
+                      colors:['blue', 'cyan', 'lime', 'yellow', 'red'] ,
+                      minAlpha:0.05 ,
+                      opacity:1 ,
+                      data: heatData}
+  
+  
+  }]
+  }
+;
+  myChart.setOption(optionID_20180817172448_2096882);
+  </script>
+  </body>
+  </html>

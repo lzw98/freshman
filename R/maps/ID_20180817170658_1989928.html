@@ -1,0 +1,104 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+  <style type="text/css">
+  body {
+  margin: 0;
+  }
+  #main {
+  height: 100%;
+  }
+  </style>
+  </head>
+  <body>
+  <div id="main"></div>
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+  <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+  <script>
+  var myChart = echarts.init(document.getElementById("main"));
+
+  var optionID_20180817170658_1989928 = 
+{
+  backgroundColor: '#fff',
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '<U+6D59><U+6C5F><U+7701><U+70ED><U+529B><U+56FE><U+793A><U+4F8B>',
+    subtext:'',
+    x:'center',
+    textStyle : {
+      color: '#1b1b1b'
+    }
+  },
+  tooltip : {
+    trigger: 'item',
+    formatter: function (v) {
+			if(typeof(v[2])=='number'){
+			return(v[1]+': '+v[2])
+			}else if(v[2].tooltipValue!=null){
+          	return v[2].tooltipValue;
+          }else{
+            return v[1];
+          }
+  }},
+    legend: {
+        show:false,
+        orient: 'vertical',
+        x:'left',
+        data:['Data'],
+      	textStyle:{color:'#fff'}
+
+    },
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  dataRange: {
+    min : 83,
+    max : 2000,
+    calculable : true,
+    color: ['green', 'white'],
+    textStyle:{
+      color:'#1b1b1b'
+    }
+  },
+  series : [
+    {
+    name:'Data',
+    type:'map',
+    mapType: '浙江',
+    itemStyle:{
+    normal:{
+    borderColor:'rgba(100,149,237,1)',
+    borderWidth: 0.5,
+    label:{show:true,textStyle:{color:'#1b1b1b'}},
+    },
+    emphasis:{label:{show:true,textStyle:{color:'#1b1b1b'}}}
+  },
+  data:[{name:'丽水市',value:118},
+		{name:'杭州市',value:369},
+		{name:'温州市',value:646},
+		{name:'宁波市',value:501},
+		{name:'舟山市',value:562},
+		{name:'台州市',value:239},
+		{name:'金华市',value:550},
+		{name:'衢州市',value:594},
+		{name:'绍兴市',value:255},
+		{name:'嘉兴市',value:408},
+		{name:'湖州市',value:358}]
+  
+  
+  }]
+}
+;
+  myChart.setOption(optionID_20180817170658_1989928);
+  </script>
+  </body>
+  </html>

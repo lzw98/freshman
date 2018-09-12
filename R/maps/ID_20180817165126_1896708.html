@@ -1,0 +1,275 @@
+<html>
+  <head>
+                <meta charset='utf-8'>
+                <style type='text/css'>
+                body {
+                margin: 0;
+                }
+                #main {
+                height: 100%;
+                }
+                </style>
+                </head>
+                <body>
+                <div id='main'></div>
+                <script src='http://echarts.baidu.com/build/dist/echarts.js'></script>
+                <script type='text/javascript' src='http://api.map.baidu.com/api?v=2.0&ak=q9U1lWgCK1aBGVC1DVWrgWa7'></script>
+                <script src='http://echarts.baidu.com/doc/asset/js/jquery.min.js'></script>
+                <script>
+
+                (function () {
+                require.config({
+                paths: {
+                echarts:'http://echarts.baidu.com/doc/example/www/js'
+                },
+                packages: [
+                {
+                name: 'BMap',
+                location: 'http://lchiffon.github.io/reveal_slidify/echarts/require',
+                main: 'main'
+                }
+                ]
+                });
+
+                require(
+                [
+                'echarts',
+                'BMap',
+                'echarts/chart/map'
+                ],
+                function (echarts, BMapExtension) {
+
+                var BMapExt = new BMapExtension($('#main')[0], BMap, echarts,{
+                enableMapClick: false
+                });
+                var map = BMapExt.getMap();
+                var container = BMapExt.getEchartsContainer();
+
+                var startPoint = {
+                x: 116.39277,
+                y: 39.924674
+                };
+                var point = new BMap.Point(startPoint.x, startPoint.y);
+                map.centerAndZoom(point, 12);
+                map.enableScrollWheelZoom(true);
+                map.setMapStyle({
+    styleJson: [
+    {
+    'featureType': 'water',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#044161'
+    }
+    },
+    {
+    'featureType': 'land',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#064f85'
+    }
+    },
+    {
+    'featureType': 'railway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#005b96',
+    'lightness': 1
+    }
+    },
+    {
+    'featureType': 'highway',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry',
+    'stylers': {
+    'color': '#004981'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#00508b'
+    }
+    },
+    {
+    'featureType': 'poi',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'green',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#056197',
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'subway',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'manmade',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'local',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'arterial',
+    'elementType': 'labels',
+    'stylers': {
+    'visibility': 'off'
+    }
+    },
+    {
+    'featureType': 'boundary',
+    'elementType': 'geometry.fill',
+    'stylers': {
+    'color': '#029fd4'
+    }
+    },
+    {
+    'featureType': 'building',
+    'elementType': 'all',
+    'stylers': {
+    'color': '#1a5787'
+    }
+    },
+    {
+    'featureType': 'label',
+    'elementType': 'all',
+    'stylers': {
+    'visibility': 'off'
+    }
+    }
+    ]
+  });
+
+
+optionID_20180817165126_1896708 = {
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '北京2016年业务分布图',
+    subtext: '',
+    x:'center',
+    textStyle : {
+      color: '#fff'
+    }
+  },
+  tooltip : {
+    show: true,
+    trigger: 'item',
+    formatter: function (v) {
+               if(v[2].tooltipValue!=null){
+               return v[2].tooltipValue;
+               }else{
+               return v[1];
+               }
+  }},
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  series : [
+    {
+      type:'map',
+      mapType: 'none',
+      data:[]
+      
+      ,markPoint : {
+        symbol:'emptyCircle',
+      symbolSize :3,
+      effect : {
+        show: true,
+        type: 'scale',
+        shadowBlur : 0
+      },
+      itemStyle:{
+      normal:{
+        label:{show:false},
+        color:'yellow'
+      },
+      emphasis: {
+        label:{show:false}
+      }
+      },
+      data : [{name:'208',value:84,symbol:'pin'},
+{name:'199',value:27,symbol:'pin'},
+{name:'210',value: 4,symbol:'pin'},
+{name:'202',value:40,symbol:'pin'},
+{name:'188',value: 7,symbol:'pin'},
+{name:'196',value:78,symbol:'pin'}
+      ]},
+      geoCoord:{'208': [116.43,39.94],
+'199': [116.34,39.97],
+'210': [116.65,39.93],
+'202': [116.62,39.99],
+'188': [116.26,39.91],
+'196': [116.52,39.89]
+                  }
+                  
+
+    },
+    ]
+};
+
+
+var myChart = BMapExt.initECharts(container);
+window.onresize = myChart.onresize;
+BMapExt.setOption(optionID_20180817165126_1896708);
+                }
+                );
+                })();
+</script>
+  </body>
+  </html>
+
+  

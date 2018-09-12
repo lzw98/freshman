@@ -1,0 +1,127 @@
+<html>
+  <head>
+  <meta charset="utf-8">
+  <style type="text/css">
+  body {
+  margin: 0;
+  }
+  #main {
+  height: 100%;
+  }
+  </style>
+  </head>
+  <body>
+  <div id="main"></div>
+  <script src="http://echarts.baidu.com/build/dist/echarts.js"></script>
+  <script src = "http://echarts.baidu.com/build/dist/echarts-all.js"></script>
+  <script>
+  var myChart = echarts.init(document.getElementById("main"));
+
+  var optionID_20180817170046_1952742 = 
+{
+  backgroundColor: '#D9D9D9',
+  color: ['gold','aqua','lime'],
+  title : {
+    text: '全国分省热力图示例',
+    subtext:'数据为随机生成',
+    x:'center',
+    textStyle : {
+      color: '#1b1b1b'
+    }
+  },
+  tooltip : {
+    trigger: 'item',
+    formatter: function (v) {
+			if(typeof(v[2])=='number'){
+			return(v[1]+': '+v[2])
+			}else if(v[2].tooltipValue!=null){
+          	return v[2].tooltipValue;
+          }else{
+            return v[1];
+          }
+  }},
+    legend: {
+        show:false,
+        orient: 'vertical',
+        x:'left',
+        data:['Data'],
+      	textStyle:{color:'#D9D9D9'}
+
+    },
+  toolbox: {
+    show : true,
+    orient : 'vertical',
+    x: 'right',
+    y: 'center',
+    feature : {
+      mark : {show: true},
+      dataView : {show: true, readOnly: false},
+      restore : {show: true},
+      saveAsImage : {show: true}
+    }
+  },
+  dataRange: {
+    min : 74,
+    max : 1038,
+    calculable : true,
+    color: ['red', 'yellow'],
+    textStyle:{
+      color:'#1b1b1b'
+    }
+  },
+  series : [
+    {
+    name:'Data',
+    type:'map',
+    mapType: 'china',
+    itemStyle:{
+    normal:{
+    borderColor:'rgba(100,149,237,1)',
+    borderWidth: 0.5,
+    label:{show:true,textStyle:{color:'#1b1b1b'}},
+    },
+    emphasis:{label:{show:true,textStyle:{color:'#1b1b1b'}}}
+  },
+  data:[{name:'新疆',value:224},
+		{name:'西藏',value:979},
+		{name:'内蒙古',value:889},
+		{name:'青海',value:692},
+		{name:'四川',value:419},
+		{name:'黑龙江',value:820},
+		{name:'甘肃',value:131},
+		{name:'云南',value:299},
+		{name:'广西',value:941},
+		{name:'湖南',value:852},
+		{name:'陕西',value:950},
+		{name:'广东',value:969},
+		{name:'吉林',value:359},
+		{name:'河北',value:850},
+		{name:'湖北',value:509},
+		{name:'贵州',value:676},
+		{name:'山东',value:808},
+		{name:'江西',value:143},
+		{name:'河南',value:721},
+		{name:'辽宁',value:179},
+		{name:'山西',value:336},
+		{name:'安徽',value:646},
+		{name:'福建',value:880},
+		{name:'浙江',value:302},
+		{name:'江苏',value:894},
+		{name:'重庆',value:701},
+		{name:'宁夏',value:981},
+		{name:'海南',value:322},
+		{name:'台湾',value:131},
+		{name:'北京',value:907},
+		{name:'天津',value:313},
+		{name:'上海',value:341},
+		{name:'香港',value:485},
+		{name:'澳门',value:261}]
+  
+  
+  }]
+}
+;
+  myChart.setOption(optionID_20180817170046_1952742);
+  </script>
+  </body>
+  </html>
